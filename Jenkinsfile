@@ -19,28 +19,24 @@ pipeline{
             steps {
                 cleanWs()
             }
-
         }
     
         stage("Checkout from SCM"){
             steps {
                 git branch: 'master', url: 'https://github.com/sulbiraj06/kuberentes-app-deploy-gitops.git'
             }
-
         }
 
         stage("Build Application"){
             steps {
                 sh "mvn clean package"
             }
-
         }
 
         stage("Test Application"){
             steps {
                 sh "mvn test"
             }
-
         }
         
         stage("Sonarqube Analysis") {
@@ -51,7 +47,6 @@ pipeline{
                     }
                 }
             }
-
         }
 
         // stage("Quality Gate") {
